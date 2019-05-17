@@ -22,19 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-from django.core.exceptions import ImproperlyConfigured
-
-
-def get_env_var(var_name):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = f"Set the {var_name} environment variable"
-        raise ImproperlyConfigured(error_msg)
-
-SECRET_KEY = get_env_var("SECRET_KEY")
-
-#SECRET_KEY = '!dd4#&p^(7z-yl%bs)!tq)q_$fb(32y&0gy=t-=7%fm5*klvx7'
+SECRET_KEY = '!dd4#&p^(7z-yl%bs)!tq)q_$fb(32y&0gy=t-=7%fm5*klvx7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
