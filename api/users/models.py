@@ -6,22 +6,18 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password=None):
         if not email:
             raise ValueError('User must have an email address')
-        try:
-            with transaction.atomic():
-                user = self.model(
-                    email=self.normalize_email(email), **extra_fields
-                )
-                user.set_password(password)
-                user.save(using=self._db)
-                return user
-        except:
-            raise
+        user = self.model(
+            email=self.normalize_email(email),
+        )
+        user.set_password(password)
+        user.save()
+        return user
 
-    def create_superuser(self, email, password, **extra_fields):
-        user = self.create(email, password=password, **extra_fields)
+    def create_superuser(self, email, password):
+        user = self.create(email, password=password)
         user.is_staff = True
         user.save()
         return user
