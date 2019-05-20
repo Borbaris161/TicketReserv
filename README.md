@@ -14,7 +14,7 @@ POST-запрос и BODY :
 }
 ***
 аутентификация с помощь JWT-токена. В headers ответ и ключ.
-http://127.0.0.1:8000/user/api/v0/authenticate_user/
+http://127.0.0.1:8000/user/api/v0/auth/
 POST-запрос и BODY:
 
 {
