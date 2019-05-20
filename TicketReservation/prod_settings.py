@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': 'cinema_db',
         'USER': 'borbaris161',
         'PASSWORD': '12345',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
         'TEST': {
             'NAME': 'test_db',

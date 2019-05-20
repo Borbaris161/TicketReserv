@@ -1,0 +1,42 @@
+version: '3'
+# хранилища
+
+volumes:
+    pgdata:
+        driver: local
+services:
+    db:
+        image: postgres
+        ports:
+            - "5432"
+        environment:
+            - POSTGRES_DB=cinema_db
+            - POSTGRES_USER=borbaris161
+            - POSTGRES_PASSWORD=12345
+
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/srv/www/TicketReservation
+        command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+
+
+
+#    postgres:
+# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
+#        image: postgres:11.3
+#        ports:
+#            - 5432
+#        environment:
+#            POSTGRES_USER: borbaris161
+#            POSTGRES_PASSWORD: 12345
+#            POSTGRES_DB: cinema_db
+#            PGDATA: /var/lib/postgresql/data
+#        volumes:
+#            - pgdata:/var/lib/postgresql/data

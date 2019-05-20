@@ -20,6 +20,11 @@ class UserManager(BaseUserManager):
         except:
             raise
 
+    def create_superuser(self, email, password, **extra_fields):
+        user = self.create(email, password=password, **extra_fields)
+        user.is_staff = True
+        user.save()
+        return user
 
 class User(AbstractBaseUser, PermissionsMixin):
     """

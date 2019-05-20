@@ -38,9 +38,3 @@ class UserSerializer(serializers.ModelSerializer):
             user.save()
             user.save(update_fields=['is_active'])
         return user
-
-    def create_superuser(self, email, password):
-        user = self.create(email, password=password)
-        user.is_staff = True
-        user.save()
-        return user

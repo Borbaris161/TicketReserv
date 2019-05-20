@@ -4,7 +4,7 @@ DATABASES = {
         'NAME': 'cinema_db',
         'USER': 'borbaris161',
         'PASSWORD': '12345',
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'PORT': '5432',
         'TEST': {
             'NAME': 'test_cinema',
