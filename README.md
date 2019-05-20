@@ -75,7 +75,9 @@ PATCH-запрос и BODY:
 Run with Docker-compose
 
 docker-compose build - соберет контейнер
+
 docker-compose up - запускаем контейнер
+
 docker-compose exec web python manage.py createsuperuser - создаем суперпользователя
 
 
