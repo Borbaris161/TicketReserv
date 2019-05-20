@@ -16,8 +16,11 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, email, password):
-        user = self.create(email, password=password)
+    def create_superuser(self, email, password=None):
+        user = self.model(
+            email=self.normalize_email(email),
+        )
+        user.set_password(password)
         user.is_staff = True
         user.save()
         return user
@@ -39,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['email']
 
     ordering = ('created',)
 
